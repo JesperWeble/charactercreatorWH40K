@@ -14,11 +14,12 @@ namespace charactercreatorRedo
     }
 
     //##### --- Ork Backgrounds --- #####\\
-    public class orkBGSpeedFreek : Class
+    public class orkBGRacer : Background
     {
-        public orkBGSpeedFreek()
+        public orkBGRacer()
         {
-            Title = "Speed Freek";
+            Title = "Racer";
+            Description = "Youz a speed freek you iz! You know betta dan anyun els dat red 'uns go fasta. No 'unz gonna tell ya how ta pilot YER mek, cuz youz da bestest o' da best! \nProficiency with 2 Vehicles of your choice.";
         }
 
     }

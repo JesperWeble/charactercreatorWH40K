@@ -5,32 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:charactercreatorRedo"
         mc:Ignorable="d" FontSize="16"
-        Title="Character Creator" Height="450" Width="800" FontFamily="Constantia">
+        Title="Character Creator" Height="450" Width="1000" FontFamily="Cambria">
     <Grid>
         <TabControl>
             <TabItem Header="Race">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>  <!-- 1 -->
+                        <ColumnDefinition Width="auto"/>  <!-- 2 -->
+                        <ColumnDefinition Width="auto"/>  <!-- 3 -->
+                        <ColumnDefinition Width="*"/>     <!-- 4 -->
+                        <ColumnDefinition Width="auto"/>  <!-- 5 -->
+                        <ColumnDefinition Width="*"/>     <!-- 6 -->
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>  <!-- 1 -->
+                        <RowDefinition Height="auto"/>  <!-- 2 -->
+                        <RowDefinition Height="*"/>     <!-- 3 -->
+                        <RowDefinition Height="auto"/>  <!-- 4 -->
+                        <RowDefinition Height="*"/>     <!-- 5 -->
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
+                    <!-- Race and Subrace w/ComboBox -->
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="Race" Margin="0,0,15,0"/>
-
-                    <ComboBox x:Name="raceBox" Grid.Column="2" Grid.Row="1" MinWidth="50" Padding="0,0" Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="Select">
+                    
+                    <ComboBox x:Name="raceBox" Grid.Column="2" Grid.Row="1" MinWidth="50" Padding="0,0" Margin="0,0,15,0" SelectedIndex="0" SelectionChanged="Select">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Title}" Margin="3,0,0,0"/>
@@ -40,15 +42,30 @@
                     
                     <TextBlock Grid.Column="1" Grid.Row="2" Text="Subrace" Margin="0,5,15,0"/>
                     
-                    <ComboBox x:Name="subraceBox" Grid.Column="2" Grid.Row="2" MinWidth="50" Padding="0,0" Margin="0,5,0,0" SelectedIndex="0" SelectionChanged="Select">
+                    <ComboBox x:Name="subraceBox" Grid.Column="2" Grid.Row="2" MinWidth="50" Padding="0,0" Margin="0,5,15,0" SelectedIndex="0" SelectionChanged="Select">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Title}" Margin="3,0,0,0"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-
-
+                    
+                    <!-- Racials -->
+                    <TextBlock Grid.Column="3" Grid.Row="1" Margin="0,0,10,0" FontSize="16" FontWeight="Bold" Text="Racials"/>
+                    <ListBox x:Name="racialListBox" Grid.Column="3" Grid.Row="2" Grid.RowSpan="4" Margin="0,0,10,0" DisplayMemberPath="Title" SelectionChanged="Select">
+                        
+                    </ListBox>
+                    <TextBlock Grid.Column="4" Grid.Row="1" FontSize="16" FontWeight="Bold" Text="Description"/>
+                    <ScrollViewer Grid.Column="4" Grid.Row="2" Grid.RowSpan="4" VerticalAlignment="top">
+                        <TextBlock x:Name="racialDesc" FontSize="14" TextWrapping="Wrap" Margin="0,0"  Text=""/>
+                    </ScrollViewer>
+                    
+                    <!-- Image and Description -->
+                    <Image x:Name="raceImage" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="2"  Grid.RowSpan="3" MaxWidth="600" MaxHeight="600" VerticalAlignment="Top" Source="https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1hpaseukj_token_3.png"/>
+                    <TextBlock Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Subrace Description"/>
+                    <ScrollViewer Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="2" MaxWidth="600" Margin="0,5,0,0" Padding="0,0,0,10" VerticalAlignment="top">
+                        <TextBlock x:Name="raceDesc" FontSize="16" TextWrapping="Wrap" Margin="0,0"  Text=""/>
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
             
@@ -107,7 +124,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="Background" Margin="0,0,15,0"/>
-                    <ComboBox x:Name="backgroundBox" Grid.Column="2" Grid.Row="1" MinWidth="50" Padding="0,0" Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="Select">
+                    <ComboBox x:Name="bgBox" Grid.Column="2" Grid.Row="1" MinWidth="50" Padding="0,0" Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="Select">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Title}" Margin="3,0,0,0"/>

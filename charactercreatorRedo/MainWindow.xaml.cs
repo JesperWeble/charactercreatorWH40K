@@ -66,6 +66,18 @@ namespace charactercreatorRedo
                     subraceBox.Items.Add(eachSubrace);
                 }
                 subraceBox.SelectedIndex = 0;
+
+                foreach (var eachRacial in selectedRace.racials)
+                {
+                    racialListBox.Items.Add(eachRacial);
+                }
+                racialListBox.SelectedIndex = 0;
+
+                foreach (var eachBG in selectedRace.backgrounds)
+                {
+                    bgBox.Items.Add(eachBG);
+                }
+                bgBox.SelectedIndex = 0;
             }
         }
         private void subraceBox_Select()
@@ -73,13 +85,35 @@ namespace charactercreatorRedo
             classBox.Items.Clear();
             var selectedSubrace = subraceBox.SelectedItem as Subrace;
             var selection = selectedSubrace;
-            foreach (var eachClass in selectedSubrace.classes)
+            if (selectedSubrace != null)
             {
-                classBox.Items.Add(eachClass);
+                foreach (var eachClass in selectedSubrace.classes)
+                {
+                    classBox.Items.Add(eachClass);
+                }
+                foreach (var eachRacial in selectedSubrace.racials)
+                {
+                    racialListBox.Items.Add(eachRacial);
+                }
+                racialListBox.SelectedIndex = 0;
+
+                try { raceDesc.Text = selectedSubrace.Description; } catch { };
             }
             classBox.SelectedIndex = 0;
+            racialListBox.SelectedIndex = 0;
+
         }
 
+        private void racialListBox_Select()
+        {
+
+            var selectedRacial = racialListBox.SelectedItem as Trait;
+            var selection = selectedRacial;
+            if (selectedRacial != null)
+            {
+                try { racialDesc.Text = selectedRacial.Description; } catch { };
+            }
+        }
 
         //##### vvvvvv Save and Load vvvvvv #####\\
 
