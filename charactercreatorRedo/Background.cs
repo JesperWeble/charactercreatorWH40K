@@ -13,14 +13,37 @@ namespace charactercreatorRedo
         public List<Trait> racials { get; set; } = new List<Trait>();
     }
 
-    //##### --- Ork Backgrounds --- #####\\
-    public class orkBGRacer : Background
+
+    //##### --- Common Backgrounds --- #####\\
+    public class bgVisionairy : Background
     {
-        public orkBGRacer()
+        public bgVisionairy()
         {
-            Title = "Racer";
+            Title = "Visionairy";
+            Description = "You've received a vision or prophetic dream.";
+        }
+
+    }
+    public class bgPilot : Background
+    {
+        public bgPilot()
+        {
+            Title = "Pilot";
+            Description = "You feel at home in the sky, you're a skilled pilot capable of soaring through the sky in an aircraft.";
+        }
+
+    }
+
+    //##### --- Ork Backgrounds --- #####\\
+    public class orkBGSpeedFreek : Background
+    {
+        public orkBGSpeedFreek()
+        {
+            Title = "Speed Freek";
             Description = "Youz a speed freek you iz! You know betta dan anyun els dat red 'uns go fasta. No 'unz gonna tell ya how ta pilot YER mek, cuz youz da bestest o' da best! \nProficiency with 2 Vehicles of your choice.";
         }
 
     }
+
+
 }

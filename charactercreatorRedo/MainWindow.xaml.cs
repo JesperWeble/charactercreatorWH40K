@@ -51,28 +51,30 @@ namespace charactercreatorRedo
             }
 
         }
+        Race? selectedRace;
         private void raceBox_Select()
         {
-            subraceBox.Items.Clear();            // Reset Subrace Box.
+            // Reinitialize \\
+            subraceBox.Items.Clear();
+            racialListBox.Items.Clear();
+
             //Uri resourceUri = new Uri("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1hpaseukj_token_3.png", UriKind.Absolute);   // Erase Image
             //RaceImage.Source = new BitmapImage(resourceUri);    // Erase Image Finish
-            var selectedRace = raceBox.SelectedItem as Race;
+            selectedRace = raceBox.SelectedItem as Race;
             var selection = selectedRace;
 
             if (selectedRace != null)
             {
-                foreach (var eachSubrace in selectedRace.subraces)
-                {
-                    subraceBox.Items.Add(eachSubrace);
-                }
-                subraceBox.SelectedIndex = 0;
-
                 foreach (var eachRacial in selectedRace.racials)
                 {
                     racialListBox.Items.Add(eachRacial);
                 }
                 racialListBox.SelectedIndex = 0;
-
+                foreach (var eachSubrace in selectedRace.subraces)
+                {
+                    subraceBox.Items.Add(eachSubrace);
+                }
+                subraceBox.SelectedIndex = 0;
                 foreach (var eachBG in selectedRace.backgrounds)
                 {
                     bgBox.Items.Add(eachBG);
@@ -80,10 +82,15 @@ namespace charactercreatorRedo
                 bgBox.SelectedIndex = 0;
             }
         }
+
+        Subrace? selectedSubrace;
         private void subraceBox_Select()
         {
+            // Reinitialize \\
             classBox.Items.Clear();
-            var selectedSubrace = subraceBox.SelectedItem as Subrace;
+            if (selectedSubrace != null){foreach (var eachRacial in selectedSubrace.racials){racialListBox.Items.Remove(eachRacial);}}
+
+            selectedSubrace = subraceBox.SelectedItem as Subrace;
             var selection = selectedSubrace;
             if (selectedSubrace != null)
             {
@@ -124,6 +131,7 @@ namespace charactercreatorRedo
             try { characterBeingSaved.Race = (Race?)raceBox.SelectedItem; } catch { }
             try { characterBeingSaved.Subrace = (Subrace?)subraceBox.SelectedItem; } catch { }
             try { characterBeingSaved.Class = (Class?)classBox.SelectedItem; } catch { }
+            try { characterBeingSaved.Background = (Background?)bgBox.SelectedItem; } catch { }
 
             characterBeingSaved.Str = int.Parse(strScore.Text);
             characterBeingSaved.Dex = int.Parse(dexScore.Text);

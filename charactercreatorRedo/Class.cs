@@ -29,4 +29,37 @@ namespace charactercreatorRedo
             }
 
         }
+        public class orkClassMekboy : Class
+        {
+            public orkClassMekboy()
+            {
+                Title = "Mekboy";
+            }
+
+        }
+        public class orkClassPainboy : Class
+        {
+            public orkClassPainboy()
+            {
+                Title = "Painboy";
+            }
+
+        }
+        public class orkClassBeastSnagga : Class
+        {
+            public orkClassBeastSnagga()
+            {
+                Title = "Beast Snagga";
+            }
+
+        }
+        public class orkClassKommando : Class
+        {
+            public orkClassKommando()
+            {
+                Title = "Kommando";
+            }
+
+        }
+
 }
