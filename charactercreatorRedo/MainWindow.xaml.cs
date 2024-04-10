@@ -58,8 +58,6 @@ namespace charactercreatorRedo
             subraceBox.Items.Clear();
             racialListBox.Items.Clear();
 
-            //Uri resourceUri = new Uri("https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1hpaseukj_token_3.png", UriKind.Absolute);   // Erase Image
-            //RaceImage.Source = new BitmapImage(resourceUri);    // Erase Image Finish
             selectedRace = raceBox.SelectedItem as Race;
             var selection = selectedRace;
 
@@ -119,6 +117,35 @@ namespace charactercreatorRedo
             if (selectedRacial != null)
             {
                 try { racialDesc.Text = selectedRacial.Description; } catch { };
+            }
+        }
+
+
+        Class? selectedClass;
+        private void classBox_Select()
+        {
+            if (selectedClass != null) { foreach (var eachClassFeat in selectedClass.traits) { classFeatListBox.Items.Remove(eachClassFeat); } }
+
+            selectedClass = classBox.SelectedItem as Class;
+            var selection = selectedClass;
+            if (selectedClass != null)
+            {
+                foreach (var eachClassFeat in selectedClass.traits)
+                {
+                    classFeatListBox.Items.Add(eachClassFeat);
+                }
+                try { classDesc.Text = selectedClass.Description; } catch { };
+            }
+            classFeatListBox.SelectedIndex = 0;
+        }
+        private void classFeatListBox_Select()
+        {
+
+            var selectedClassFeat = classFeatListBox.SelectedItem as Trait;
+            var selection = selectedClassFeat;
+            if (selectedClassFeat != null)
+            {
+                try { classFeatDesc.Text = selectedClassFeat.Description; } catch { };
             }
         }
 

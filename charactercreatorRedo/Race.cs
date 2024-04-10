@@ -113,7 +113,7 @@ namespace charactercreatorRedo
                     orkSubraceGretchin.classes.Add(new orkClassWeirdboy());
                 raceOrk.subraces.Add(orkSubraceGretchin);
 
-                raceOrk.backgrounds.Add(new orkBGRacer());
+                raceOrk.backgrounds.Add(new orkBGSpeedFreek());
             
             races.Add(raceOrk);
 
