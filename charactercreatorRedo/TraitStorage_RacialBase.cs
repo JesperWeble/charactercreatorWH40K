@@ -9,31 +9,41 @@ namespace charactercreatorRedo
 
 //#####-*&/  ORKS  \*-#####\\
 
-    public class orkRacialBase : Trait
+    public class Trait_Racial_Base_Ork : Trait
     {
-        public orkRacialBase()
+        public Trait_Racial_Base_Ork()
         {
             Title = "Ork Traits";
-            Description = "Your base traits and stats\n+2 CON\n\nAge. Orks reach adulthood in a week or so after they emerge from the fungal pod. Mercifully most are short-lived, soon destroying themselves in a maelstrom of violence and internecine conflict. The true length is unknown By the Imperium.\n\nAlignment: Orks are generally a chaotic race usually in the chaotic neutral realm.\n\nSize: Your hight is dependent on Subrace.\nSpeed: Your base walking speed is based on your Subrace.\nLanguages: You can speak but not read, and write gothic.\n\n--Traits Gained--\nPrimal Intuition\nDarkvision";
+            Description = "-- Stats --\nAbility: +2 CON\nSpeed: Your base walking speed is based on your Subrace.\nLanguages: Speak, not write Gothic.\n\n-- Traits Gained --\nPrimal Intuition\nDarkvision";
+            conBonus = 2;
             traits.addTrait(new commonTraitDarkvision());
             traits.addTrait(new orkRacialPrimalIntuition());
-            conBonus = 2;
+            traits.addTrait(new Trait_Racial_Ork_GetStuckIn());
         }
     }
 
-//#####-*\  ORKS  /*-#####\\
+    public class Trait_Racial_Ork_GetStuckIn : Trait
+    {
+        public Trait_Racial_Ork_GetStuckIn()
+        {
+            Title = "Get Stuck In";
+            Description = "When an attack made with a Melee Weapon hits with a natural 6, add one additional dice to the subsequent wound roll.";
+        }
+
+    }
+
+    //#####-*\  ORKS  /*-#####\\
 
 
     //---/  Boy  \---\\
 
-        public class orkBoyRacialBase : Trait
+    public class Trait_Racial_Base_Ork_Boy : Trait
         {
-            public orkBoyRacialBase()
+            public Trait_Racial_Base_Ork_Boy()
             {
                 Title = "Boy Traits";
-                Description = "Speed: 30ft\n\nSize: Boys vary widely in height and build, from the boy that are 6 to 8 ft tall to a Nob Being around 10 to 12ft tall. Regardless of your position in that range, your size is Medium, Though a Boy with the right might may grow as tall as 15ft in that case they are Large.\n\n--Traits Gained--\nEre We Go\nMob Rule\nMight Makes Right";
-                speedGround = 30;
-                size = 3; // Medium
+                Description = "-- Stats --\nHit Points: +2\nSpeed: 30ft\nSize: Medium\n\n--Traits Gained--\nEre We Go\nMob Rule\nMight Makes Right";
+                hp = 2;
                 traits.addTrait(new orkBoyRacialEreWeGo());
                 traits.addTrait(new orkBoyRacialMobRule());
                 traits.addTrait(new orkBoyRacialMightMakesRight());
@@ -46,15 +56,14 @@ namespace charactercreatorRedo
 
     //---/ Grot \---\\
 
-        public class orkGrotRacialBase : Trait
+        public class Trait_Racial_Base_Ork_Grot : Trait
         {
-            public orkGrotRacialBase()
+            public Trait_Racial_Base_Ork_Grot()
             {
                 Title = "Grot Traits";
-                Description = "+4 Dex, -2 Con\n\nSpeed: 35ft\n\nSize: Small\n\n--Traits Gained--\nSneaky Escape\nGrot Cunning\nSmall Frame";
-                dexBonus = 4; conBonus = -2;
-                speedGround = 35;
-                size = 2; // Small
+                Description = "-- Stats --\nAbility: +4 DEX & -2 CON\nSpeed: 35ft\nSize: Small\n\n--Traits Gained--\nSneaky Escape\nGrot Cunning\nSmall Frame";
+                dexBonus = 4; 
+                conBonus = -2;
                 traits.addTrait(new commonTraitSmallFrame());
                 traits.addTrait(new orkGrotRacialSneakyEscape());
                 traits.addTrait(new orkGrotRacialGrotCunning());

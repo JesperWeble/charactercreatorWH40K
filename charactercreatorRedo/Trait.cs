@@ -13,13 +13,9 @@ namespace charactercreatorRedo
         public List<Power> powers { get; set; } = new List<Power>();
         public List<Spell> spells { get; set; } = new List<Spell>();
         public List<Trait> traits { get; set; } = new List<Trait>();
-        public int? speedGround { get; set; }
-        public int? speedAir { get; set;}
-        public int? size { get; set;}
-        public int? hitDieSize { get; set;}
-        public int? hitDieCount { get; set;}
-        public int? hpBonus { get; set; }
-        public int? acBonus { get; set; }
+        public int? hp { get; set; }
+        public int? hpMin { get; set; }
+        public int? ac { get; set; }
         public int? strBonus { get; set; }
         public int? dexBonus { get; set; }
         public int? conBonus { get; set; }
@@ -28,7 +24,6 @@ namespace charactercreatorRedo
         public int? chaBonus { get; set; }
     }
 
-    // ---- Common Traits ---- \\
     public class commonTraitDarkvision : Trait
     {
         public commonTraitDarkvision()
@@ -58,15 +53,12 @@ namespace charactercreatorRedo
 
     }
 
-    // ###---- RACIALS ----### \\
-    // ##---- Ork ----## \\
-
     public class orkRacialPrimalIntuition : Trait
     {
         public orkRacialPrimalIntuition()
         {
             Title = "Primal Intuition";
-            Description = "-- 1 Proficiency Gained of Your Choice --\nAnimal Handling\nInsight\nIntimidation\nMedicine\nNature\nPerception\nSurvival";
+            Description = "-- Gain Proficiency in 1 --\nAnimal Handling\nInsight\nIntimidation\nMedicine\nNature\nPerception\nSurvival";
         }
 
     }
@@ -86,7 +78,7 @@ namespace charactercreatorRedo
             public orkBoyRacialMobRule()
             {
                 Title = "Mob Rule";
-                Description = "Gain advantage on attack rolls against targets when at least 2 other Ork allies are within 5ft of the target and the allies are not incapacitated.";
+                Description = "Decrease Melee accuracy threshold by 1 while target is within 5ft of atleast one other allied Ork that is not incapacitated. If atleast two other allied Orks are within 5ft, also decrease Ranged accuracy threshold by 1.";
             }
 
         }
@@ -95,7 +87,7 @@ namespace charactercreatorRedo
             public orkBoyRacialMightMakesRight()
             {
                 Title = "Might Makes Right";
-                Description = "As you fight and kill more and more, you begin to change physically, making you bigger and stronger. Gain traits and ability score bonuses as you level up\n\nLevel 1-5:\t+2 Str   Trait: Powerful Build\n\nLevel 6-10:\t+2 Con   Trait: Larger Than Most\n\nLevel 11-15:\t+2 Cha & Str\n\nLevel 16-20:\t+2 Str, Con & Cha   Size: Large   Trait: Large Frame";
+                Description = "As you kill and fight more and more you slowly grow bigger and stronger.";
                 traits.addTrait(new orkBoyRacialMightMakesRightT1());
 
             }
@@ -106,7 +98,7 @@ namespace charactercreatorRedo
             public orkBoyRacialMightMakesRightT1()
             {
                 Title = "Might Makes Right Tier 1";
-                Description = "You are an ordinary Boy, average run o' the mill Ork with bulging muscles\n+2 Str\n--Traits Gained--\nPowerful Build";
+                Description = "You are an ordinary Boy, average run o' the mill Ork with bulging muscles\n\n-- Stats --\n+2 CON\n\n--Traits Gained--\nPowerful Build";
                 strBonus = 2;
                 traits.addTrait(new commonTraitPowerfulBuild());
 

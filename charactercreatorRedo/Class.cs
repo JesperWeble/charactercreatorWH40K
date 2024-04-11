@@ -12,6 +12,7 @@ namespace charactercreatorRedo
         public string? Description { get; set; }
         public int? Level { get; set; }
         public List<Trait> traits { get; set; } = new List<Trait>();
+
     }
     //##### --- Ork Classes --- #####\\
         public class orkClassShoota : Class
@@ -20,25 +21,18 @@ namespace charactercreatorRedo
             {
                 Title = "Shoota Boy";
                 Description = "The standard soldier Ork, they excel at firing various weaponry or hitting things very hard. Highly Versatile. Brutal. Their primary ability is Strength, you don't need good aim, just more dakka.";
-                traits.addTrait(new trait_CF_Ork_Boy_Shoota_Base());
+                traits.addTrait(new Trait_Class_Base_Ork_Shoota());
             }
         
         }
-        public class orkClassWeirdboy : Class
-        {
-            public orkClassWeirdboy()
-            {
-                Title = "Weirdboy";
-                Description = "Psyker caster Ork, they excel at crowd control, utility and are like walking time bombs. Primary ability is Wisdom";
-            }
 
-        }
         public class orkClassMekboy : Class
         {
             public orkClassMekboy()
             {
                 Title = "Mekboy";
                 Description = "The mechanic Ork, they excel at crafting, repairing, manipulating and piloting vehicles and mechs. Very good with explosives. Primary ability is Intelligence.";
+                traits.addTrait(new Trait_Class_Base_Ork_Mekboy());
             }
 
         }
@@ -69,5 +63,13 @@ namespace charactercreatorRedo
             }
 
         }
+        public class orkClassWeirdboy : Class
+        {
+            public orkClassWeirdboy()
+            {
+                Title = "Weirdboy";
+                Description = "Psyker caster Ork, they excel at crowd control, utility and are like walking time bombs. Primary ability is Wisdom";
+            }
 
+        }
 }
