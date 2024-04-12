@@ -42,15 +42,7 @@ namespace charactercreatorRedo
             {
                 Title = "Painboy";
                 Description = "The doctor Ork, they excel at support with resuscitation, healing, buffing and similar. Though accidents may occur and hilarity ensues. Primary ability is Intelligence, you don't need to know how to do it, as long as you know what to do.";
-            }
-
-        }
-        public class orkClassBeastSnagga : Class
-        {
-            public orkClassBeastSnagga()
-            {
-                Title = "Beast Snagga";
-                Description = "The hunter-killer Ork, they excel at tracking, hunting and trapping, they also excel at handling, fighting and riding beasts. Often carry around a squig for any occasion. Primary ability is Wisdom";
+                traits.addTrait(new Trait_Class_Base_Ork_Painboy());
             }
 
         }
@@ -60,15 +52,28 @@ namespace charactercreatorRedo
             {
                 Title = "Kommando";
                 Description = "The assassin Ork, they excel at stealth and killing. Kunnin'. Primary ability is Dexterity, sometimes less dakka is okay so long as you can aim.";
+                traits.addTrait(new Trait_Class_Base_Ork_Kommando());
             }
 
         }
+        public class orkClassBeastSnagga : Class
+        {
+            public orkClassBeastSnagga()
+            {
+                Title = "Beast Snagga";
+                Description = "The hunter-killer Ork, they excel at tracking, hunting and trapping, they also excel at handling, fighting and riding beasts. Often carry around a squig for any occasion. Primary ability is Wisdom";
+                traits.addTrait(new Trait_Class_Base_Ork_BeastSnagga());
+            }
+
+        }
+        
         public class orkClassWeirdboy : Class
         {
             public orkClassWeirdboy()
             {
                 Title = "Weirdboy";
                 Description = "Psyker caster Ork, they excel at crowd control, utility and are like walking time bombs. Primary ability is Wisdom";
+                traits.addTrait(new Trait_Class_Base_Ork_Weirdboy());
             }
 
         }

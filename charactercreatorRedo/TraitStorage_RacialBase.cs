@@ -14,7 +14,7 @@ namespace charactercreatorRedo
         public Trait_Racial_Base_Ork()
         {
             Title = "Ork Traits";
-            Description = "-- Stats --\nAbility: +2 CON\nSpeed: Your base walking speed is based on your Subrace.\nLanguages: Speak, not write Gothic.\n\n-- Traits Gained --\nPrimal Intuition\nDarkvision";
+            Description = "-- Stats --\nAbility: +2 CON\nSpeed: Your base walking speed is based on your Subrace.\nLanguages: Speak, not write Gothic.\n\n-- Traits Gained --\nPrimal Intuition\nDarkvision\nGet Stuck In.";
             conBonus = 2;
             traits.addTrait(new commonTraitDarkvision());
             traits.addTrait(new orkRacialPrimalIntuition());
