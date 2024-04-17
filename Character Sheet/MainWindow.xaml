@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Character_Sheet"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" FontSize="16"
+        Title="Character Creator" Height="400" Width="800" FontFamily="Cambria">
     <TabControl>
         <TabItem Header="Character">
             <Grid>
@@ -38,24 +38,29 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
-                    <Border BorderBrush="Gainsboro" BorderThickness="1,1,4,4" Grid.Column="1" Grid.Row="1" Margin="0,0,0,10">
+                    <TextBlock Text="Name" Grid.Column="1" Grid.Row="1" FontWeight="Bold" Margin="0,0,0,0"/>
+                    <Border BorderBrush="Gainsboro" BorderThickness="1,1,4,4" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="6" Margin="0,15,0,20">
                         <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock x:Name="textBlock_CharacterName" Text="Name Here" FontSize="18" Margin="0,0,10,0"/>
+                            <TextBlock x:Name="textBlock_CharacterName" Text="Name" Margin="0,0,10,0"/>
 
-                            <TextBlock x:Name="textBlock_CharacterRace" Text="Race Here" VerticalAlignment="Bottom" Margin="0,0,10,0"/>
+                            <TextBlock x:Name="textBlock_CharacterRace" Text="Race" VerticalAlignment="Bottom" Margin="0,0,10,0"/>
 
-                            <TextBlock x:Name="textBlock_CharacterClass" Text="Class Here"  VerticalAlignment="Bottom" Margin="0,0,10,0"/>
+                            <TextBlock x:Name="textBlock_CharacterClass" Text="Class"  VerticalAlignment="Bottom" Margin="0,0,10,0"/>
                         </StackPanel>
                     </Border>
-                    <Border BorderBrush="Gainsboro" BorderThickness="1,1,4,4" Grid.Column="1" Grid.Row="2">
+                    <TextBlock Text="Hit Points" Grid.Column="1" Grid.Row="2" FontWeight="Bold" Margin="0,-15,0,0"/>
+                    <Border BorderBrush="Gainsboro" BorderThickness="1,1,4,4" Grid.Column="1" Grid.Row="2" Margin="0,2,0,0">
+                        
                         <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock x:Name="textBlock_currentHP" Text="Name Here" Margin="0,0,10,0"/>
-
-                            <TextBlock x:Name="textBlock_maxHP" Text="Race Here" VerticalAlignment="Bottom" Margin="0,0,10,0"/>
+                            <TextBox x:Name="textBlock_currentHP" Text="0" Margin="0,0,3,0" MinWidth="30" HorizontalContentAlignment="Center" Cursor="IBeam"/>
+                            <TextBlock Text="/" Margin="0,0,3,0"/>
+                            <TextBlock Text="Max HP" Margin="0,0,0,0"/>
+                        </StackPanel>
+                    </Border>
 
                             <TextBlock x:Name="textBlock_AC" Text="Class Here"  VerticalAlignment="Bottom" Margin="0,0,10,0"/>
-                        </StackPanel>
-                    </Border>
+                        
+
 
 
 

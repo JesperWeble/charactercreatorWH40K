@@ -180,6 +180,10 @@ namespace charactercreatorRedo
             //try { characterBeingMade.Background = (Background?)bgBox.SelectedItem; } catch { }'
             try { characterBeingMade.Description = charDesc.Text; } catch { }
             try { characterBeingMade.Backstory = charStory.Text; } catch { }
+            foreach (var eachAbilityScore in characterBeingMade.abilityScores)
+            {
+                try { }
+            }
             characterBeingMade.Str = int.Parse(strScore.Text);
             characterBeingMade.Dex = int.Parse(dexScore.Text);
             characterBeingMade.Con = int.Parse(conScore.Text);

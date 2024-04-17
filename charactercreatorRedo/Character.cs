@@ -42,6 +42,15 @@ namespace charactercreatorRedo
             { "Technology", false },
             { "Crafting", false },
         };
+        public Dictionary<string, int> abilityScores { get; set; } = new Dictionary<string, int>()
+        {
+            { "STR", 0},
+            { "DEX", 0},
+            { "CON", 0},
+            { "INT", 0},
+            { "WIS", 0},
+            { "CHA", 0}
+        };
         public Dictionary<string, bool> savingThrows { get; set; } = new Dictionary<string, bool>()
         {
             { "STRSave", false },
@@ -52,11 +61,6 @@ namespace charactercreatorRedo
             { "CHASave", false }
         };
         public int Level { get; set; }
-        public int Str { get; set; }
-        public int Dex { get; set; }
-        public int Con { get; set; }
-        public int Int { get; set; }
-        public int Wis { get; set; }
-        public int Cha { get; set; }
+        public int hp { get; set; }
     }
 }
