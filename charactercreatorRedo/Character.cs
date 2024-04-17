@@ -51,6 +51,15 @@ namespace charactercreatorRedo
             { "WIS", 0},
             { "CHA", 0}
         };
+        public Dictionary<string, int> abilityModifiers { get; set; } = new Dictionary<string, int>()
+        {
+            { "STRMod", 0},
+            { "DEXMod", 0},
+            { "CONMod", 0},
+            { "INTMod", 0},
+            { "WISMod", 0},
+            { "CHAMod", 0}
+        };
         public Dictionary<string, bool> savingThrows { get; set; } = new Dictionary<string, bool>()
         {
             { "STRSave", false },
@@ -60,7 +69,8 @@ namespace charactercreatorRedo
             { "WISSave", false },
             { "CHASave", false }
         };
-        public int Level { get; set; }
-        public int hp { get; set; }
+        public int? Level { get; set; }
+        public int? hp { get; set; } = 0;
+        public int? hpMin { get; set; } = 0;
     }
 }

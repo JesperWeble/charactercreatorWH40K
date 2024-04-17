@@ -28,9 +28,17 @@ namespace Character_Sheet
             InitializeComponent();
 
         }
+        public void onlyNumValid(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+
+        }
 
         private void Load(object sender, RoutedEventArgs e)
         {
+            int TraitNum = 0;
             var loadFileDialog = new OpenFileDialog
             {
                 Filter = "JSON Files (*.json)|*.json",
@@ -48,7 +56,33 @@ namespace Character_Sheet
                 try { textBlock_CharacterName.Text = loadedChar.Title; } catch { }
                 try { textBlock_CharacterRace.Text = loadedChar.Race.Title; } catch { }
                 try { textBlock_CharacterClass.Text = loadedChar.Class.Title; } catch { }
+                // Hit Points
+                for (int index = 0; index < loadedChar.Class.traits.Count; index++)
+                {
+                    var trait = loadedChar.Class.traits[index];
+                    if (trait.hpMin != null)
+                    {
+                        if (trait.hpMin > loadedChar.hpMin)
+                        {
+                            loadedChar.hpMin = trait.hpMin;
+                        }
 
+                    }
+
+                    if (trait.hp != null)
+                    {
+                        loadedChar.hp += trait.hp;
+                    }
+                }
+                
+                if (loadedChar.hp < loadedChar.hpMin)
+                {
+                    loadedChar.hp = loadedChar.hpMin;
+
+                }
+
+                try { textBlock_maxHP.Text = loadedChar.hp.ToString(); } catch { }
+                try { textBox_currentHP.Text = loadedChar.hp.ToString(); } catch { }
             }
         }
     }
