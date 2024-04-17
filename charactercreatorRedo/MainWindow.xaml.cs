@@ -258,12 +258,12 @@ namespace charactercreatorRedo
                 }
                 catch { }
                 
-                strScore.Text = loadedChar.Str.ToString();
-                dexScore.Text = loadedChar.Dex.ToString();
-                conScore.Text = loadedChar.Con.ToString();
-                intScore.Text = loadedChar.Int.ToString();
-                wisScore.Text = loadedChar.Wis.ToString();
-                chaScore.Text = loadedChar.Cha.ToString();
+                strScore.Text = loadedChar.abilityScores["STR"].ToString();
+                dexScore.Text = loadedChar.abilityScores["DEX"].ToString();
+                conScore.Text = loadedChar.abilityScores["CON"].ToString();
+                intScore.Text = loadedChar.abilityScores["INT"].ToString();
+                wisScore.Text = loadedChar.abilityScores["WIS"].ToString();
+                chaScore.Text = loadedChar.abilityScores["CHA"].ToString();
 
                 charDesc.Text = loadedChar.Description;
                 charStory.Text = loadedChar.Backstory;
