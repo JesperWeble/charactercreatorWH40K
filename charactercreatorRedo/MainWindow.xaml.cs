@@ -180,16 +180,15 @@ namespace charactercreatorRedo
             //try { characterBeingMade.Background = (Background?)bgBox.SelectedItem; } catch { }'
             try { characterBeingMade.Description = charDesc.Text; } catch { }
             try { characterBeingMade.Backstory = charStory.Text; } catch { }
-            foreach (var eachAbilityScore in characterBeingMade.abilityScores)
-            {
-                try { }
-            }
-            characterBeingMade.Str = int.Parse(strScore.Text);
-            characterBeingMade.Dex = int.Parse(dexScore.Text);
-            characterBeingMade.Con = int.Parse(conScore.Text);
-            characterBeingMade.Int = int.Parse(intScore.Text);
-            characterBeingMade.Wis = int.Parse(wisScore.Text);
-            characterBeingMade.Cha = int.Parse(chaScore.Text);
+
+            characterBeingMade.abilityScores["STR"] = int.Parse(strScore.Text);
+            characterBeingMade.abilityScores["DEX"] = int.Parse(dexScore.Text);
+            characterBeingMade.abilityScores["CON"] = int.Parse(conScore.Text);
+            characterBeingMade.abilityScores["INT"] = int.Parse(intScore.Text);
+            characterBeingMade.abilityScores["WIS"] = int.Parse(wisScore.Text);
+            characterBeingMade.abilityScores["CHA"] = int.Parse(chaScore.Text);
+
+
 
             foreach (var eachSkill in characterBeingMade.proficiencies)
             {
