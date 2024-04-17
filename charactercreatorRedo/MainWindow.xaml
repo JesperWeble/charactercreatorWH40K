@@ -73,26 +73,26 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="auto"/>  <!-- 1 -->
-                        <ColumnDefinition Width="auto"/>  <!-- 2 -->
-                        <ColumnDefinition Width="auto"/>  <!-- 3 -->
-                        <ColumnDefinition Width="*"/>     <!-- 4 -->
-                        <ColumnDefinition Width="auto"/>  <!-- 5 -->
-                        <ColumnDefinition Width="*"/>     <!-- 6 -->
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5"/>
-                        <RowDefinition Height="auto"/>  <!-- 1 -->
-                        <RowDefinition Height="auto"/>  <!-- 2 -->
-                        <RowDefinition Height="*"/>     <!-- 3 -->
-                        <RowDefinition Height="auto"/>  <!-- 4 -->
-                        <RowDefinition Height="*"/>     <!-- 5 -->
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="Class" Margin="0,0,15,0"/>
-                    <ComboBox x:Name="classBox" Grid.Column="2" Grid.Row="1" MinWidth="50" Padding="0,0" Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="Select">
+                    <ComboBox x:Name="classBox" Grid.Column="2" Grid.Row="1" MinWidth="50" Padding="0,0" Margin="0,0,10,0" SelectedIndex="0" SelectionChanged="Select">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Title}" Margin="3,0,0,0"/>
@@ -108,17 +108,16 @@
                     <ScrollViewer Grid.Column="4" Grid.Row="2" Grid.RowSpan="4" VerticalAlignment="top">
                         <TextBlock x:Name="classFeatDesc" FontSize="14" TextWrapping="Wrap" Margin="0,0"  Text=""/>
                     </ScrollViewer>
-                    
+
                     <Image x:Name="classImage" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="2"  Grid.RowSpan="3" MaxWidth="600" MaxHeight="600" VerticalAlignment="Top" Source="https://d2t4fc8ff77neh.cloudfront.net/cardSrcMedia/1hpaseukj_token_3.png"/>
                     <TextBlock Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="Class Description"/>
                     <ScrollViewer Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="2" MaxWidth="600" Margin="0,5,0,0" Padding="0,0,0,10" VerticalAlignment="top">
                         <TextBlock x:Name="classDesc" FontSize="16" TextWrapping="Wrap" Margin="0,0"  Text=""/>
                     </ScrollViewer>
                 </Grid>
-
             </TabItem>
             
-            <TabItem Header="Background">
+            <!--<TabItem Header="Background">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5"/>
@@ -148,8 +147,48 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </Grid>
-            </TabItem>
+            </TabItem>-->
             
+            <TabItem Header="Proficiencies">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="1" Grid.Row="1" >
+                        <CheckBox x:Name="checkBox_Prof_Athletics" Content="Athletics" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Acrobatics" Content="Acrobatics" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_SleightOfHand" Content="Sleight of Hand" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Stealth" Content="Stealth" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Arcana" Content="Arcana" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_History" Content="History" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Investigation" Content="Investigation" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Nature" Content="Nature" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Religion" Content="Religion" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_AnimalHandling" Content="Animal Handling" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Insight" Content="Insight" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Medicine" Content="Medicine" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Perception" Content="Perception" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Survival" Content="Survival" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Deception" Content="Deception" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Intimidation" Content="Intimidation" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Performance" Content="Performance" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Persuasion" Content="Persuasion" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Technology" Content="Technology" Checked="Proficient"/>
+                        <CheckBox x:Name="checkBox_Prof_Crafting" Content="Crafting" Checked="Proficient"/>
+                    </StackPanel>
+
+
+                </Grid>
+            </TabItem>
+
             <TabItem Header="Character">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -172,23 +211,25 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
                     <!-- Name Box -->
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="Name" Padding="1" Margin="0,0,10,0" FontWeight="Bold"/>
                     <TextBox x:Name="TextBox_CharName" Grid.Column="2" Grid.Row="1" MinWidth="100"/>
-                    
-                    <!-- Separator -->                    
+
+                    <!-- Separator -->
                     <Border Grid.Column="0" Grid.Row="2" Margin="0,5,0,5" BorderBrush="Gray" BorderThickness="0,1,0,1" Grid.ColumnSpan="99"/>
-                    
+
                     <!-- Abilities -->
                     <TextBlock Text="Ability" Grid.Column="1" Grid.Row="3" Margin="0,0,10,4" FontWeight="Bold"/>
                     <TextBlock Text="Score" Grid.Column="2" Grid.Row="3" Margin="0,0,10,4" FontWeight="Bold"/>
 
                     <TextBlock Text="STR" Grid.Column="1" Grid.Row="4"/>
                     <TextBox x:Name="strScore" Grid.Column="2" Grid.Row="4" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
-                    
+
                     <TextBlock Text="DEX" Grid.Column="1" Grid.Row="5" />
                     <TextBox x:Name="dexScore" Grid.Column="2" Grid.Row="5" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
 
@@ -203,34 +244,40 @@
 
                     <TextBlock Text="CHA" Grid.Column="1" Grid.Row="9"/>
                     <TextBox x:Name="chaScore" Grid.Column="2" Grid.Row="9" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
+                    
+                    
+                    <Button Grid.Column="1" Grid.Row="11" Margin="0,10,10,0"  MinHeight="25" MinWidth="70" Content="Save" Click="Save"/>
+                    <Button Grid.Column="2" Grid.Row="11" Margin="10,10,0,0" MinHeight="25" MinWidth="50" Content="Load" Click="Load"/>
+
+                    <Grid Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="99" Grid.RowSpan="99">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Description" Margin="10,0,0,0"/>
+                        <ScrollViewer Grid.ColumnSpan="3" Grid.Row="1" Margin="10,0,20,5" MaxHeight="300">
+                            <TextBox x:Name="charDesc" Padding="0,0,0,100" Cursor="IBeam" TextWrapping="Wrap"/>
+                        </ScrollViewer>
+                        
+
+                        <TextBlock Grid.Row="3" Text="Backstory" Margin="10,0,0,0"/>
+                        <ScrollViewer Grid.ColumnSpan="3" Grid.Row="4" Margin="10,0,20,0" MaxHeight="300">
+                            <TextBox x:Name="charStory" Padding="0,0,0,100" Cursor="IBeam" TextWrapping="Wrap"/>
+                        </ScrollViewer>
+                        
+                    </Grid>
 
                 </Grid>
-
             </TabItem>
-            <TabItem Header="Finalize">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="5"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="5"/>
-                    </Grid.RowDefinitions>
-
-                    <Button Grid.Column="1" Grid.Row="1" MinHeight="25" MinWidth="50" Content="Save" Click="Save"/>
-                    <Button Grid.Column="3" Grid.Row="1" MinHeight="25" MinWidth="50" Content="Load" Click="Load"/>
-                </Grid>
-                
-
-            </TabItem>
-
         </TabControl>
     </Grid>
 </Window>

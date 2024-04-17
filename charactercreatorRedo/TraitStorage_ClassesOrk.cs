@@ -14,7 +14,7 @@ namespace charactercreatorRedo
         public Trait_Class_Base_Ork_Shoota()
         {
             Title = "Class Base";
-            Description = "-- Stats --\nHit Points: 8 + CON Modifier to a minimum of 8\n\n-- Class Features --\nNot Enuff Dakka\nHeavy Hittin'\nWAAAGH!";
+            Description = "-- Stats --\nHit Points: 8 + CON Modifier to a minimum of 8\n\n--Choose Two Proficiencies--\nIntimidation\nAthletics\nAcrobatics\nPerception\nPersuasion\nPerformance\n\n-- Class Features --\nNot Enuff Dakka\nHeavy Hittin'\nWAAAGH!";
             hp = 8;
             hpMin = 8;
             traits.addTrait(new Trait_Class_Ork_Shoota_NotEnuffDakka());
@@ -48,7 +48,7 @@ namespace charactercreatorRedo
         public Trait_Class_Ork_Shoota_WAAAGH()
         {
             Title = "WAAAGH!";
-            Description = "You may declare WAAAGH during your turn, only once per battle.\n\n*Until the start of your next turn*\nYou and nearby allied Orks\n\tMay Sprint as a free action\n\tHave your AC increased by 1\n\tRoll one additional attack dice on any attack.";
+            Description = "You may declare WAAAGH during your turn, only once per battle.\n\n*Until the start of your next turn*\nYou and nearby allied Orks\n\tMay Sprint as a free action\n\tHave your AC increased by 1\n\tRoll one additional attack dice on any attack. This stacks.";
         }
     }
 
@@ -63,7 +63,7 @@ namespace charactercreatorRedo
         public Trait_Class_Base_Ork_Mekboy()
         {
             Title = "Class Base";
-            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n-- Class Features --\nMekky Talent\nMekaniak\nDakkaboosta";
+            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n--Choose Two Proficiencies--\nTechnology\nCrafting\nPerception\nInvestigation\nHistory\nAthletics\nSleight of Hand\n\n-- Class Features --\nMekky Talent\nMekaniak\nDakkaboosta";
             hp = 6;
             hpMin = 6;
             traits.addTrait(new Trait_Class_Ork_Mekboy_MekkyTalent());
@@ -107,7 +107,7 @@ namespace charactercreatorRedo
         public Trait_Class_Base_Ork_Painboy()
         {
             Title = "Class Base";
-            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n-- Class Features --\n";
+            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n--Choose Two Proficiencies--\nMedicine\nNature\nSleight of Hand\nSurvival\nDeception\nCrafting\nHistory\n\n-- Class Features --\nDoks License\nGet Back In Dere\nWalk it off";
             hp = 6;
             hpMin = 6;
             traits.addTrait(new Trait_Class_Ork_Painboy_DoksLicense());
@@ -152,7 +152,7 @@ namespace charactercreatorRedo
         public Trait_Class_Base_Ork_Kommando()
         {
             Title = "Class Base";
-            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n-- Class Features --\nSneaky Surprise\nKunnin'ly Brutral\nKritikal Krumpin'";
+            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n---Choose Two Proficiencies--\nStealth\nAcrobatics\nSleight of Hand\nInvestigation\nNature\nAnimal Handling\nInsight\nSurvival\nIntimidation\nCrafting\n\n- Class Features --\nSneaky Surprise\nKunnin'ly Brutral\nKritikal Krumpin'";
             hp = 6;
             hpMin = 6;
             traits.addTrait(new Trait_Class_Ork_Kommando_SneakySurprise());
@@ -196,7 +196,7 @@ namespace charactercreatorRedo
         public Trait_Class_Base_Ork_BeastSnagga()
         {
             Title = "Class Base";
-            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n-- Class Features --\n";
+            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n--Choose Two Proficiencies--\nAnimal Handling\nNature\nInvestigation\nMedicine\nSurvival\nAcrobatics\nAthletics\nPerception\nPerformance\nIntimidation\n\n-- Class Features --\nMonster Hunter\nWild Ride\nSquig Masta";
             hp = 6;
             hpMin = 6;
             traits.addTrait(new Trait_Class_Ork_BeastSnagga_MonsterHunter());
@@ -240,12 +240,10 @@ namespace charactercreatorRedo
         public Trait_Class_Base_Ork_Weirdboy()
         {
             Title = "Class Base";
-            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n-- Class Features --\n";
+            Description = "-- Stats --\nHit Points: 6 + CON Modifier to a minimum of 6\n\n--Choose Two Proficiencies--\nArcana\nReligion\nInvestigation\nStealth\nNature\nInsight\nPerception\nDeception\nPerformance\nPersuasion\n\n-- Class Features --\nWeird Power";
             hp = 6;
             hpMin = 6;
-            traits.addTrait(new Trait_Class_Ork_Painboy_DoksLicense());
-            traits.addTrait(new Trait_Class_Ork_Painboy_GetBackInDere());
-            traits.addTrait(new Trait_Class_Ork_Painboy_WalkItOff());
+            traits.addTrait(new Trait_Class_Ork_Weirdboy_WeirdPower());
 
 
         }
@@ -255,7 +253,12 @@ namespace charactercreatorRedo
         public Trait_Class_Ork_Weirdboy_WeirdPower()
         {
             Title = "Weird Power";
-            Description = "You are considered a Psyker, a caster of spells: To manifest a spell you must roll 2d6s + your WIS modifier. Each spell has a Warp Charge, to manifest the spell you must roll equal to or above the Warp Charge.\nEvery time you attempt to manifest a spell regardless of if it succeeds or fails the Warp Charge of that spell is increased by 1 until your next long rest.\nIf you roll double ones or double sixes you suffer the perils of the Warp taking 1d3 damage. If you reach 0 health from this everyone within 15ft of you also suffer 1d3 damage.\n-- Spells Gained --\nSmite";
+            Description = "You are considered a Psyker, a caster of spells: To manifest a spell you must roll 2d6s + your WIS modifier. Each spell has a Warp Charge, to manifest the spell you must roll equal to or above the Warp Charge.\nEvery time you attempt to manifest a spell regardless of if it succeeds or fails the Warp Charge of that spell is increased by 1 until your next long rest.\nIf you roll double ones or double sixes you suffer the perils of the Warp taking 1d3 damage. If you reach 0 health from this everyone within 15ft of you also suffer 1d3 damage.\n-- Spells Gained --\nSmite\nDa Jump\nWarpath\nPrestidigitation";
+            traits.addTrait(new spell_Standard_Smite());
+            traits.addTrait(new spell_Weirdboy_DaJump());
+            traits.addTrait(new spell_Weirdboy_Warpath());
+            traits.addTrait(new spell_Weirdboy_Prestidigitation());
+
         }
     }
 }

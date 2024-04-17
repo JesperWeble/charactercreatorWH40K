@@ -11,7 +11,6 @@ namespace charactercreatorRedo
         public string? Title { get; set; }
         public string? Description { get; set; }
         public List<Power> powers { get; set; } = new List<Power>();
-        public List<Spell> spells { get; set; } = new List<Spell>();
         public List<Trait> traits { get; set; } = new List<Trait>();
         public int? hp { get; set; }
         public int? hpMin { get; set; }
@@ -58,7 +57,7 @@ namespace charactercreatorRedo
         public orkRacialPrimalIntuition()
         {
             Title = "Primal Intuition";
-            Description = "-- Gain Proficiency in 1 --\nAnimal Handling\nInsight\nIntimidation\nMedicine\nNature\nPerception\nSurvival";
+            Description = "-- Choose Two Proficiencies --\nAnimal Handling\nInsight\nIntimidation\nMedicine\nNature\nPerception\nSurvival";
         }
 
     }
@@ -99,8 +98,20 @@ namespace charactercreatorRedo
             {
                 Title = "Might Makes Right Tier 1";
                 Description = "You are an ordinary Boy, average run o' the mill Ork with bulging muscles\n\n-- Stats --\n+2 CON\n\n--Traits Gained--\nPowerful Build";
-                strBonus = 2;
+                conBonus = 2;
                 traits.addTrait(new commonTraitPowerfulBuild());
+
+            }
+
+        }
+
+        public class orkBoyRacialMightMakesRightT2 : Trait
+        {
+            public orkBoyRacialMightMakesRightT2()
+            {
+                Title = "Might Makes Right Tier 2";
+                Description = "You are a Nobb, a real massive zoggin' Boy.\n\n-- Stats --\n+2 STR & +2 CON\n\n--Traits Gained--\nPowerful Build\nLarger Than Most";
+                strBonus = 2;
 
             }
 

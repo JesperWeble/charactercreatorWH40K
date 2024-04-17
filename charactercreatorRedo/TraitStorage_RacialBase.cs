@@ -42,7 +42,7 @@ namespace charactercreatorRedo
             public Trait_Racial_Base_Ork_Boy()
             {
                 Title = "Boy Traits";
-                Description = "-- Stats --\nHit Points: +2\nSpeed: 30ft\nSize: Medium\n\n--Traits Gained--\nEre We Go\nMob Rule\nMight Makes Right";
+                Description = "-- Stats --\nSpeed: 30ft\nSize: Medium\n\n--Traits Gained--\nEre We Go\nMob Rule\nMight Makes Right";
                 hp = 2;
                 traits.addTrait(new orkBoyRacialEreWeGo());
                 traits.addTrait(new orkBoyRacialMobRule());

@@ -21,6 +21,9 @@ namespace charactercreatorRedo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string theChangedSelectionName;
+        private string theCheckedBoxName;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,13 +33,22 @@ namespace charactercreatorRedo
 
         public void onlyNumValid(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            TextBox textBox = (TextBox)sender;
+            string input = textBox.Text + e.Text;
+            if (input.Length <= 2)
+            {
+                Regex regex = new Regex("[^0-9]+");
+                e.Handled = regex.IsMatch(e.Text);
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            
+            
         }
 
         //##### vvvvvv Selection Boxes vvvvvv #####\\
-
-        private string theChangedSelectionName;
         private void Select(object sender, SelectionChangedEventArgs e)
         {
             try { ComboBox theChangedSelection = (ComboBox)sender; theChangedSelectionName = theChangedSelection.Name; } catch { }
@@ -51,6 +63,14 @@ namespace charactercreatorRedo
             }
 
         }
+
+        private void Proficient(object sender, RoutedEventArgs e)
+        {
+            try { CheckBox theCheckedBox = (CheckBox)sender; theCheckedBoxName = theCheckedBox.Name; } catch { }
+                
+            
+        }
+
         Race? selectedRace;
         private void raceBox_Select()
         {
@@ -72,12 +92,12 @@ namespace charactercreatorRedo
                 {
                     subraceBox.Items.Add(eachSubrace);
                 }
-                subraceBox.SelectedIndex = 0;
-                foreach (var eachBG in selectedRace.backgrounds)
-                {
-                    bgBox.Items.Add(eachBG);
-                }
-                bgBox.SelectedIndex = 0;
+                //subraceBox.SelectedIndex = 0;
+                //foreach (var eachBG in selectedRace.backgrounds)
+                //{
+                //    bgBox.Items.Add(eachBG);
+                //}
+                //bgBox.SelectedIndex = 0;
             }
         }
 
@@ -106,7 +126,6 @@ namespace charactercreatorRedo
             }
             classBox.SelectedIndex = 0;
             racialListBox.SelectedIndex = 0;
-
         }
 
         private void racialListBox_Select()
@@ -153,19 +172,37 @@ namespace charactercreatorRedo
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            Character characterBeingSaved = new Character();
-            characterBeingSaved.Title = TextBox_CharName.Text;
-            try { characterBeingSaved.Race = (Race?)raceBox.SelectedItem; } catch { }
-            try { characterBeingSaved.Subrace = (Subrace?)subraceBox.SelectedItem; } catch { }
-            try { characterBeingSaved.Class = (Class?)classBox.SelectedItem; } catch { }
-            try { characterBeingSaved.Background = (Background?)bgBox.SelectedItem; } catch { }
+            Character characterBeingMade = new Character();
+            characterBeingMade.Title = TextBox_CharName.Text;
+            try { characterBeingMade.Race = (Race?)raceBox.SelectedItem; } catch { }
+            try { characterBeingMade.Subrace = (Subrace?)subraceBox.SelectedItem; } catch { }
+            try { characterBeingMade.Class = (Class?)classBox.SelectedItem; } catch { }
+            //try { characterBeingMade.Background = (Background?)bgBox.SelectedItem; } catch { }'
+            try { characterBeingMade.Description = charDesc.Text; } catch { }
+            try { characterBeingMade.Backstory = charStory.Text; } catch { }
+            characterBeingMade.Str = int.Parse(strScore.Text);
+            characterBeingMade.Dex = int.Parse(dexScore.Text);
+            characterBeingMade.Con = int.Parse(conScore.Text);
+            characterBeingMade.Int = int.Parse(intScore.Text);
+            characterBeingMade.Wis = int.Parse(wisScore.Text);
+            characterBeingMade.Cha = int.Parse(chaScore.Text);
 
-            characterBeingSaved.Str = int.Parse(strScore.Text);
-            characterBeingSaved.Dex = int.Parse(dexScore.Text);
-            characterBeingSaved.Con = int.Parse(conScore.Text);
-            characterBeingSaved.Int = int.Parse(intScore.Text);
-            characterBeingSaved.Wis = int.Parse(wisScore.Text);
-            characterBeingSaved.Cha = int.Parse(chaScore.Text);
+            foreach (var eachSkill in characterBeingMade.proficiencies)
+            {
+                string skillName = eachSkill.Key;
+                string checkBoxName = $"checkBox_Prof_{skillName}";
+                CheckBox checkBoxBeingChecked = (CheckBox)FindName(checkBoxName);
+                if (checkBoxBeingChecked.IsChecked == true)
+                {
+                    characterBeingMade.proficiencies[eachSkill.Key] = true;
+                }
+                else
+                {
+                    characterBeingMade.proficiencies[eachSkill.Key] = false;
+                }
+            }
+
+
 
 
 
@@ -178,10 +215,10 @@ namespace charactercreatorRedo
             bool? result = saveFileDialog.ShowDialog();
             if (result == true)
             {
-                string json = JsonConvert.SerializeObject(characterBeingSaved);
+                string json = JsonConvert.SerializeObject(characterBeingMade);
                 string filePath = saveFileDialog.FileName;
                 File.WriteAllText(filePath, json);
-                MessageBox.Show("Object serialized and saved to file successfully.");
+                MessageBox.Show("Save Complete");
             }
         }
         private void Load(object sender, RoutedEventArgs e)
@@ -198,7 +235,7 @@ namespace charactercreatorRedo
                 string filePath = loadFileDialog.FileName;
                 string json = File.ReadAllText(filePath);
                 Character loadedChar = JsonConvert.DeserializeObject<Character>(json);
-                MessageBox.Show("Object deserialized successfully.");
+                MessageBox.Show("Load Complete");
 
                 TextBox_CharName.Text = loadedChar.Title;
                 try
@@ -225,9 +262,25 @@ namespace charactercreatorRedo
                 wisScore.Text = loadedChar.Wis.ToString();
                 chaScore.Text = loadedChar.Cha.ToString();
 
+                charDesc.Text = loadedChar.Description;
+                charStory.Text = loadedChar.Backstory;
+
+                foreach (var eachSkill in loadedChar.proficiencies)
+                {
+                    string skillName = eachSkill.Key;
+                    string checkBoxName = $"checkBox_Prof_{skillName}";
+                    CheckBox checkBoxBeingChecked = (CheckBox)FindName(checkBoxName);
+                    if (eachSkill.Value == true)
+                    {
+                        checkBoxBeingChecked.IsChecked = true;
+                    }
+                    else
+                    {
+                        checkBoxBeingChecked.IsChecked = false;
+                    }
+                }
+
             }
         }
-
-
     }
 }
