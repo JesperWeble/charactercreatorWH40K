@@ -188,7 +188,19 @@ namespace charactercreatorRedo
             characterBeingMade.abilityScores["WIS"] = int.Parse(wisScore.Text);
             characterBeingMade.abilityScores["CHA"] = int.Parse(chaScore.Text);
 
-
+            foreach (var eachSave in characterBeingMade.savingThrows)
+            {
+                string saveName = eachSave.Key;
+                CheckBox checkBoxBeingChecked = (CheckBox)FindName($"checkBox_{saveName}");
+                if (checkBoxBeingChecked.IsChecked == true)
+                {
+                    characterBeingMade.savingThrows[eachSave.Key] = true;
+                }
+                else
+                {
+                    characterBeingMade.savingThrows[eachSave.Key] = false;
+                }
+            }
 
             foreach (var eachSkill in characterBeingMade.proficiencies)
             {
@@ -264,6 +276,20 @@ namespace charactercreatorRedo
 
                 charDesc.Text = loadedChar.Description;
                 charStory.Text = loadedChar.Backstory;
+
+                foreach (var eachSave in loadedChar.savingThrows)
+                {
+                    string saveName = eachSave.Key;
+                    CheckBox checkBoxBeingChecked = (CheckBox)FindName($"checkBox_{saveName}");
+                    if (eachSave.Value == true)
+                    {
+                        checkBoxBeingChecked.IsChecked = true;
+                    }
+                    else
+                    {
+                        checkBoxBeingChecked.IsChecked = false;
+                    }
+                }
 
                 foreach (var eachSkill in loadedChar.proficiencies)
                 {

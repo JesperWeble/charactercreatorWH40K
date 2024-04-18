@@ -77,6 +77,22 @@ namespace Character_Sheet
                     TextBlockToModify = (TextBlock)FindName($"textBlock_{abilityName}_Mod");
                     TextBlockToModify.Text = loadedChar.abilityModifiers[$"{abilityName}_Mod"].ToString();
 
+                    
+
+                }
+                // Saves
+                foreach (var eachSave in loadedChar.savingThrows)
+                {
+                    string saveName = eachSave.Key;
+                    CheckBox checkBoxBeingChecked = (CheckBox)FindName($"checkBox_{saveName}");
+                    if (eachSave.Value == true)
+                    {
+                        checkBoxBeingChecked.IsChecked = true;
+                    }
+                    else
+                    {
+                        checkBoxBeingChecked.IsChecked = false;
+                    }
                 }
 
                 loadedChar.hp = loadedChar.hpMin;

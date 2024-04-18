@@ -226,25 +226,31 @@
                     <!-- Abilities -->
                     <TextBlock Text="Ability" Grid.Column="1" Grid.Row="3" Margin="0,0,10,4" FontWeight="Bold"/>
                     <TextBlock Text="Score" Grid.Column="2" Grid.Row="3" Margin="0,0,10,4" FontWeight="Bold"/>
+                    <TextBlock Text="Save" Grid.Column="3" Grid.Row="3" Margin="0,0,10,4" FontWeight="Bold"/>
 
                     <TextBlock Text="STR" Grid.Column="1" Grid.Row="4"/>
                     <TextBox x:Name="strScore" Grid.Column="2" Grid.Row="4" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
+                    <CheckBox x:Name="checkBox_STR_Save" Grid.Column="3" Grid.Row="4"/>
 
                     <TextBlock Text="DEX" Grid.Column="1" Grid.Row="5" />
                     <TextBox x:Name="dexScore" Grid.Column="2" Grid.Row="5" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
-
+                    <CheckBox x:Name="checkBox_DEX_Save" Grid.Column="3" Grid.Row="5"/>
+                    
                     <TextBlock Text="CON" Grid.Column="1" Grid.Row="6"/>
                     <TextBox x:Name="conScore" Grid.Column="2" Grid.Row="6" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
-
+                    <CheckBox x:Name="checkBox_CON_Save" Grid.Column="3" Grid.Row="6"/>
+                    
                     <TextBlock Text="INT" Grid.Column="1" Grid.Row="7"/>
                     <TextBox x:Name="intScore" Grid.Column="2" Grid.Row="7" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
-
+                    <CheckBox x:Name="checkBox_INT_Save" Grid.Column="3" Grid.Row="7"/>
+                    
                     <TextBlock Text="WIS" Grid.Column="1" Grid.Row="8"/>
                     <TextBox x:Name="wisScore" Grid.Column="2" Grid.Row="8" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
-
+                    <CheckBox x:Name="checkBox_WIS_Save" Grid.Column="3" Grid.Row="8"/>
+                    
                     <TextBlock Text="CHA" Grid.Column="1" Grid.Row="9"/>
                     <TextBox x:Name="chaScore" Grid.Column="2" Grid.Row="9" Margin="0,0,50,0" PreviewTextInput="onlyNumValid"/>
-                    
+                    <CheckBox x:Name="checkBox_CHA_Save" Grid.Column="3" Grid.Row="9"/>
                     
                     <Button Grid.Column="1" Grid.Row="11" Margin="0,10,10,0"  MinHeight="25" MinWidth="70" Content="Save" Click="Save"/>
                     <Button Grid.Column="2" Grid.Row="11" Margin="10,10,0,0" MinHeight="25" MinWidth="50" Content="Load" Click="Load"/>

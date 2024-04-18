@@ -82,37 +82,45 @@
                                 <TextBlock TextAlignment="Center" Text="STR"/>
                                 <TextBlock x:Name="textBlock_STR" TextAlignment="Center" Text="0"/>
                                 <TextBlock x:Name="textBlock_STR_Mod" TextAlignment="Center" Text="0"/>
+                                <CheckBox x:Name="checkBox_STR_Save" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0,0,10,0">
                                 <TextBlock TextAlignment="Center" Text="DEX"/>
                                 <TextBlock x:Name="textBlock_DEX" TextAlignment="Center" Text="0"/>
                                 <TextBlock x:Name="textBlock_DEX_Mod" TextAlignment="Center" Text="0"/>
+                                <CheckBox x:Name="checkBox_DEX_Save" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0,0,10,0">
                                 <TextBlock Text="CON"/>
                                 <TextBlock x:Name="textBlock_CON" TextAlignment="Center" Text="0"/>
                                 <TextBlock x:Name="textBlock_CON_Mod" TextAlignment="Center" Text="0"/>
+                                <CheckBox x:Name="checkBox_CON_Save" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0,0,10,0">
                                 <TextBlock Text="INT"/>
                                 <TextBlock x:Name="textBlock_INT" TextAlignment="Center" Text="0"/>                                
-                                <TextBlock x:Name="textBlock_INT_Mod" TextAlignment="Center" Text="0"/>                                
+                                <TextBlock x:Name="textBlock_INT_Mod" TextAlignment="Center" Text="0"/>
+                                <CheckBox x:Name="checkBox_INT_Save" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0,0,10,0">
                                 <TextBlock Text="WIS"/>
                                 <TextBlock x:Name="textBlock_WIS" TextAlignment="Center" Text="0"/>
                                 <TextBlock x:Name="textBlock_WIS_Mod" TextAlignment="Center" Text="0"/>
+                                <CheckBox x:Name="checkBox_WIS_Save" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0,0,10,0">
                                 <TextBlock Text="CHA" />
                                 <TextBlock x:Name="textBlock_CHA" TextAlignment="Center" Text="0"/>
                                 <TextBlock x:Name="textBlock_CHA_Mod" TextAlignment="Center" Text="0"/>
+                                <CheckBox x:Name="checkBox_CHA_Save" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </StackPanel>
                         
                     </Border>
 
-
+                    <!-- Need Skills and Proficiencies-->
+                    <!-- Needs Weapons & Spells -->
+                    <!-- Needs Armor and Items -->
 
 
                         <Button Grid.Column="1" Grid.Row="4" Margin="0,10,0,0" MinHeight="25" MinWidth="50" Content="Load" Click="Load"/>
