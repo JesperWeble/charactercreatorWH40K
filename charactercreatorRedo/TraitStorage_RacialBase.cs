@@ -15,7 +15,7 @@ namespace charactercreatorRedo
         {
             Title = "Ork Traits";
             Description = "-- Stats --\nAbility: +2 CON\nSpeed: Your base walking speed is based on your Subrace.\nLanguages: Speak, not write Gothic.\n\n-- Traits Gained --\nPrimal Intuition\nDarkvision\nGet Stuck In.";
-            conBonus = 2;
+            abilityBonus["CON_Bonus"] = 2;
             traits.addTrait(new commonTraitDarkvision());
             traits.addTrait(new orkRacialPrimalIntuition());
             traits.addTrait(new Trait_Racial_Ork_GetStuckIn());
@@ -62,8 +62,8 @@ namespace charactercreatorRedo
             {
                 Title = "Grot Traits";
                 Description = "-- Stats --\nAbility: +4 DEX & -2 CON\nSpeed: 35ft\nSize: Small\n\n--Traits Gained--\nSneaky Escape\nGrot Cunning\nSmall Frame";
-                dexBonus = 4; 
-                conBonus = -2;
+                abilityBonus["DEX_Bonus"] = 4; 
+                abilityBonus["CON_Bonus"] = -2;
                 traits.addTrait(new commonTraitSmallFrame());
                 traits.addTrait(new orkGrotRacialSneakyEscape());
                 traits.addTrait(new orkGrotRacialGrotCunning());

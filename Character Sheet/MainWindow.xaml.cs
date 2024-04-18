@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using charactercreatorRedo;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Character_Sheet
 {
@@ -38,7 +39,6 @@ namespace Character_Sheet
 
         private void Load(object sender, RoutedEventArgs e)
         {
-            int TraitNum = 0;
             var loadFileDialog = new OpenFileDialog
             {
                 Filter = "JSON Files (*.json)|*.json",
@@ -61,20 +61,25 @@ namespace Character_Sheet
                 foreach (var eachAbility in loadedChar.abilityScores)
                 {
                     string abilityName = eachAbility.Key;
-                    CheckBox checkBoxBeingChecked = (CheckBox)FindName(checkBoxName);
-                    if (eachSkill.Value == true)
+                    for (int index = 0; index < loadedChar.Class.traits.Count; index++)
                     {
-                        checkBoxBeingChecked.IsChecked = true;
+                        var trait = loadedChar.Class.traits[index];
+                        if (trait.abilityBonus[$"{abilityName}_Bonus"] != null)
+                        {
+                            loadedChar.abilityScores[abilityName] += trait.abilityBonus[$"{abilityName}_Bonus"];
+                        }
                     }
-                    else
-                    {
-                        checkBoxBeingChecked.IsChecked = false;
-                    }
+                    //Modifiers
+                    loadedChar.abilityModifiers[$"{abilityName}_Mod"] = (loadedChar.abilityScores[abilityName] - 10) / 2;
+
+                    TextBlock TextBlockToModify = (TextBlock)FindName($"textBlock_{abilityName}");
+                    TextBlockToModify.Text = loadedChar.abilityScores[abilityName].ToString();
+                    TextBlockToModify = (TextBlock)FindName($"textBlock_{abilityName}_Mod");
+                    TextBlockToModify.Text = loadedChar.abilityModifiers[$"{abilityName}_Mod"].ToString();
+
                 }
 
                 loadedChar.hp = loadedChar.hpMin;
-
-                // Ability Modifiers
 
                 // Hit Points
                 for (int index = 0; index < loadedChar.Class.traits.Count; index++)
@@ -94,7 +99,8 @@ namespace Character_Sheet
                         loadedChar.hp += trait.hp;
                     }
                 }
-                
+                loadedChar.hp += loadedChar.abilityModifiers["CON_Mod"];
+
                 if (loadedChar.hp < loadedChar.hpMin)
                 {
                     loadedChar.hp = loadedChar.hpMin;
@@ -105,6 +111,8 @@ namespace Character_Sheet
                 try { textBox_currentHP.Text = loadedChar.hp.ToString(); } catch { }
 
                 // Armor Class
+
+                loadedChar.ac = loadedChar.abilityModifiers["DEX_Mod"];
                 try { textBlock_AC.Text = loadedChar.ac.ToString(); } catch { }
             }
         }
