@@ -206,9 +206,6 @@ namespace charactercreatorRedo
             }
 
 
-
-
-
             var saveFileDialog = new SaveFileDialog
             {
                 Filter = "JSON Files (*.json)|*.json",

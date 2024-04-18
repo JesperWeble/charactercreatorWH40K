@@ -54,8 +54,28 @@ namespace Character_Sheet
                 MessageBox.Show("Load Complete");
 
                 try { textBlock_CharacterName.Text = loadedChar.Title; } catch { }
-                try { textBlock_CharacterRace.Text = loadedChar.Race.Title; } catch { }
+                try { textBlock_CharacterRace.Text = $"{loadedChar.Race.Title} | {loadedChar.Subrace.Title}"; } catch { }
                 try { textBlock_CharacterClass.Text = loadedChar.Class.Title; } catch { }
+
+                // Ability Scores
+                foreach (var eachAbility in loadedChar.abilityScores)
+                {
+                    string abilityName = eachAbility.Key;
+                    CheckBox checkBoxBeingChecked = (CheckBox)FindName(checkBoxName);
+                    if (eachSkill.Value == true)
+                    {
+                        checkBoxBeingChecked.IsChecked = true;
+                    }
+                    else
+                    {
+                        checkBoxBeingChecked.IsChecked = false;
+                    }
+                }
+
+                loadedChar.hp = loadedChar.hpMin;
+
+                // Ability Modifiers
+
                 // Hit Points
                 for (int index = 0; index < loadedChar.Class.traits.Count; index++)
                 {
@@ -83,6 +103,9 @@ namespace Character_Sheet
 
                 try { textBlock_maxHP.Text = loadedChar.hp.ToString(); } catch { }
                 try { textBox_currentHP.Text = loadedChar.hp.ToString(); } catch { }
+
+                // Armor Class
+                try { textBlock_AC.Text = loadedChar.ac.ToString(); } catch { }
             }
         }
     }

@@ -15,12 +15,15 @@ namespace charactercreatorRedo
         public int? hp { get; set; }
         public int? hpMin { get; set; }
         public int? ac { get; set; }
-        public int? strBonus { get; set; }
-        public int? dexBonus { get; set; }
-        public int? conBonus { get; set; }
-        public int? intBonus { get; set; }
-        public int? wisBonus { get; set; }
-        public int? chaBonus { get; set; }
+        public Dictionary<string, int> abilityBonus { get; set; } = new Dictionary<string, int>()
+        {
+            { "STR_Bonus", 0},
+            { "DEX_Bonus", 0},
+            { "CON_Bonus", 0},
+            { "INT_Bonus", 0},
+            { "WIS_Bonus", 0},
+            { "CHA_Bonus", 0}
+        };
     }
 
     public class commonTraitDarkvision : Trait
@@ -98,7 +101,7 @@ namespace charactercreatorRedo
             {
                 Title = "Might Makes Right Tier 1";
                 Description = "You are an ordinary Boy, average run o' the mill Ork with bulging muscles\n\n-- Stats --\n+2 CON\n\n--Traits Gained--\nPowerful Build";
-                conBonus = 2;
+                abilityBonus["CON_Bonus"] = 2;
                 traits.addTrait(new commonTraitPowerfulBuild());
 
             }
@@ -111,7 +114,7 @@ namespace charactercreatorRedo
             {
                 Title = "Might Makes Right Tier 2";
                 Description = "You are a Nobb, a real massive zoggin' Boy.\n\n-- Stats --\n+2 STR & +2 CON\n\n--Traits Gained--\nPowerful Build\nLarger Than Most";
-                strBonus = 2;
+                abilityBonus["STR_Bonus"] = 2;
 
             }
 
