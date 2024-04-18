@@ -95,6 +95,20 @@ namespace Character_Sheet
                     }
                 }
 
+                foreach (var eachSkill in loadedChar.proficiencies)
+                {
+                    string skillName = eachSkill.Key;
+                    CheckBox checkBoxBeingChecked = (CheckBox)FindName($"checkBox_Prof_{skillName}");
+                    if (eachSkill.Value == true)
+                    {
+                        checkBoxBeingChecked.IsChecked = true;
+                    }
+                    else
+                    {
+                        checkBoxBeingChecked.IsChecked = false;
+                    }
+                }
+
                 loadedChar.hp = loadedChar.hpMin;
 
                 // Hit Points
