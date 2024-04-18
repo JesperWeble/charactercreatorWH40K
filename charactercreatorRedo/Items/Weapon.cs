@@ -8,6 +8,13 @@ namespace charactercreatorRedo
 {
     public class Weapon : Item
     {
+        public int? Attacks { get; set; }
+        public int? Damage { get; set; }
+        public int? AccuracyThreshold { get; set; }
+        public int? Pierce { get; set; }
+        public string? Range { get; set; }
+        public string? Classification { get; set; }
+        public string? Tags { get; set; }
     }
 
 
@@ -16,7 +23,14 @@ namespace charactercreatorRedo
         public Wpn_Shoota()
         {
             Title = "Shoota";
-            Description = "Standard Issue Ork DAKKA\n\nRange:\t30/60 ft\nAttacks:\t2\nAccuracy Threshold:\t5+\nDamage:\t1\n\n-- Tags --\nRapid Fire(1): Roll 1 additional Attacks when fired from half range";
+            Description = "Standard Issue Ork DAKKA, Rapid Fire(1): Roll 1 additional Attacks when fired from half range";
+            Attacks = 2;
+            AccuracyThreshold = 5;
+            Damage = 1;
+            Range = "30/60ft";
+            Classification = "Dakka";
+            Tags = "Rapid Fire(1)";
+
         }
     }
 }

@@ -144,6 +144,8 @@ namespace Character_Sheet
 
                 loadedChar.ac = loadedChar.abilityModifiers["DEX_Mod"];
                 try { textBlock_AC.Text = loadedChar.ac.ToString(); } catch { }
+
+                datagrid_Weapons.ItemsSource = loadedChar.Class.Loadout.Values;
             }
         }
     }

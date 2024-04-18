@@ -69,6 +69,12 @@ namespace charactercreatorRedo
             { "WIS_Save", false },
             { "CHA_Save", false }
         };
+        public Dictionary<string, Weapon> weapons { get; set; } = new Dictionary<string, Weapon>()
+        {
+        };
+        public Dictionary<string, Item> Inventory { get; set; } = new Dictionary<string, Item>()
+        {
+        };
         public int? Level { get; set; }
         public int? hp { get; set; } = 0;
         public int? hpMin { get; set; } = 0;

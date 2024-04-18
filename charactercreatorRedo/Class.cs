@@ -12,6 +12,12 @@ namespace charactercreatorRedo
         public string? Description { get; set; }
         public int? Level { get; set; }
         public List<Trait> traits { get; set; } = new List<Trait>();
+        public Dictionary<string, Item> ItemPack { get; set; } = new Dictionary<string, Item>()
+        {
+        };
+        public Dictionary<string, Weapon> Loadout { get; set; } = new Dictionary<string, Weapon>()
+        {
+        };
 
     }
     //##### --- Ork Classes --- #####\\
@@ -22,6 +28,7 @@ namespace charactercreatorRedo
                 Title = "Shoota Boy";
                 Description = "The standard soldier Ork, they excel at firing various weaponry or hitting things very hard. Highly Versatile. Brutal. Their primary ability is Strength, you don't need good aim, just more dakka.";
                 traits.addTrait(new Trait_Class_Base_Ork_Shoota());
+                Loadout.Add("Shoota", new Wpn_Shoota());
             }
         
         }
