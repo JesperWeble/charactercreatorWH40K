@@ -13,6 +13,7 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using System;
 
 namespace charactercreatorRedo
 {
@@ -187,6 +188,50 @@ namespace charactercreatorRedo
             characterBeingMade.abilityScores["INT"] = int.Parse(intScore.Text);
             characterBeingMade.abilityScores["WIS"] = int.Parse(wisScore.Text);
             characterBeingMade.abilityScores["CHA"] = int.Parse(chaScore.Text);
+
+            foreach (var eachAbility in characterBeingMade.abilityScores)
+            {
+                string abilityName = eachAbility.Key;
+                for (int index = 0; index < characterBeingMade.Class.traits.Count; index++)
+                {
+                    var trait = characterBeingMade.Class.traits[index];
+                    if (trait.abilityBonus[$"{abilityName}_Bonus"] != null)
+                    {
+                        characterBeingMade.abilityScores[abilityName] += trait.abilityBonus[$"{abilityName}_Bonus"];
+                    }
+                }
+                //Modifiers
+                characterBeingMade.abilityModifiers[$"{abilityName}_Mod"] = (characterBeingMade.abilityScores[abilityName] - 10) / 2;
+            }
+
+            // Hit Points
+            for (int index = 0; index < characterBeingMade.Class.traits.Count; index++)
+            {
+                var trait = characterBeingMade.Class.traits[index];
+                if (trait.hpMin != null)
+                {
+                    if (trait.hpMin > characterBeingMade.hpMin)
+                    {
+                        characterBeingMade.hpMin = trait.hpMin;
+                    }
+
+                }
+                characterBeingMade.maxHP = characterBeingMade.hpMin;
+                if (trait.hp != null)
+                {
+                    characterBeingMade.maxHP += trait.hp;
+                }
+            }
+            characterBeingMade.maxHP += characterBeingMade.abilityModifiers["CON_Mod"];
+
+            if (characterBeingMade.maxHP < characterBeingMade.hpMin)
+            {
+                characterBeingMade.maxHP = characterBeingMade.hpMin;
+
+            }
+            characterBeingMade.hp = characterBeingMade.maxHP;
+
+            
 
             foreach (var eachSave in characterBeingMade.savingThrows)
             {

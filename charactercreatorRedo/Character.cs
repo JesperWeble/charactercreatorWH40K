@@ -76,6 +76,7 @@ namespace charactercreatorRedo
         {
         };
         public int? Level { get; set; }
+        public int? maxHP { get; set; } = 0;
         public int? hp { get; set; } = 0;
         public int? hpMin { get; set; } = 0;
         public int? ac { get; set; } = 0;

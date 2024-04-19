@@ -16,6 +16,7 @@ using System.Reflection;
 using charactercreatorRedo;
 using System;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.ObjectModel;
 
 namespace Character_Sheet
 {
@@ -24,6 +25,9 @@ namespace Character_Sheet
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string filePath;
+        int health;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,10 +35,25 @@ namespace Character_Sheet
         }
         public void onlyNumValid(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new Regex("[^0-9+-]+");
             e.Handled = regex.IsMatch(e.Text);
 
 
+        }
+
+        private void Save()
+        {
+            if (filePath != null)
+            {
+                string json = File.ReadAllText(filePath);
+                Character loadedChar = JsonConvert.DeserializeObject<Character>(json);
+
+                loadedChar.hp = int.Parse(textBox_currentHP.Text);
+
+                string saveFile = JsonConvert.SerializeObject(loadedChar);
+                File.WriteAllText(filePath, saveFile);
+            }
+            
         }
 
         private void Load(object sender, RoutedEventArgs e)
@@ -48,7 +67,7 @@ namespace Character_Sheet
             bool? result = loadFileDialog.ShowDialog();
             if (result == true)
             {
-                string filePath = loadFileDialog.FileName;
+                filePath = loadFileDialog.FileName;
                 string json = File.ReadAllText(filePath);
                 Character loadedChar = JsonConvert.DeserializeObject<Character>(json);
                 MessageBox.Show("Load Complete");
@@ -61,25 +80,21 @@ namespace Character_Sheet
                 foreach (var eachAbility in loadedChar.abilityScores)
                 {
                     string abilityName = eachAbility.Key;
-                    for (int index = 0; index < loadedChar.Class.traits.Count; index++)
-                    {
-                        var trait = loadedChar.Class.traits[index];
-                        if (trait.abilityBonus[$"{abilityName}_Bonus"] != null)
-                        {
-                            loadedChar.abilityScores[abilityName] += trait.abilityBonus[$"{abilityName}_Bonus"];
-                        }
-                    }
-                    //Modifiers
-                    loadedChar.abilityModifiers[$"{abilityName}_Mod"] = (loadedChar.abilityScores[abilityName] - 10) / 2;
-
                     TextBlock TextBlockToModify = (TextBlock)FindName($"textBlock_{abilityName}");
                     TextBlockToModify.Text = loadedChar.abilityScores[abilityName].ToString();
                     TextBlockToModify = (TextBlock)FindName($"textBlock_{abilityName}_Mod");
                     TextBlockToModify.Text = loadedChar.abilityModifiers[$"{abilityName}_Mod"].ToString();
-
-                    
-
                 }
+
+                // Hit Points
+                try { textBlock_maxHP.Text = loadedChar.maxHP.ToString(); } catch { }
+                try { textBox_currentHP.Text = loadedChar.hp.ToString(); } catch { }
+                health = int.Parse(textBox_currentHP.Text);
+
+                // Armor Class
+                loadedChar.ac = loadedChar.abilityModifiers["DEX_Mod"];
+                try { textBlock_AC.Text = loadedChar.ac.ToString(); } catch { }
+
                 // Saves
                 foreach (var eachSave in loadedChar.savingThrows)
                 {
@@ -95,6 +110,7 @@ namespace Character_Sheet
                     }
                 }
 
+                // Proficiencies
                 foreach (var eachSkill in loadedChar.proficiencies)
                 {
                     string skillName = eachSkill.Key;
@@ -109,44 +125,27 @@ namespace Character_Sheet
                     }
                 }
 
-                loadedChar.hp = loadedChar.hpMin;
-
-                // Hit Points
-                for (int index = 0; index < loadedChar.Class.traits.Count; index++)
-                {
-                    var trait = loadedChar.Class.traits[index];
-                    if (trait.hpMin != null)
-                    {
-                        if (trait.hpMin > loadedChar.hpMin)
-                        {
-                            loadedChar.hpMin = trait.hpMin;
-                        }
-
-                    }
-
-                    if (trait.hp != null)
-                    {
-                        loadedChar.hp += trait.hp;
-                    }
-                }
-                loadedChar.hp += loadedChar.abilityModifiers["CON_Mod"];
-
-                if (loadedChar.hp < loadedChar.hpMin)
-                {
-                    loadedChar.hp = loadedChar.hpMin;
-
-                }
-
-                try { textBlock_maxHP.Text = loadedChar.hp.ToString(); } catch { }
-                try { textBox_currentHP.Text = loadedChar.hp.ToString(); } catch { }
-
-                // Armor Class
-
-                loadedChar.ac = loadedChar.abilityModifiers["DEX_Mod"];
-                try { textBlock_AC.Text = loadedChar.ac.ToString(); } catch { }
-
-                datagrid_Weapons.ItemsSource = loadedChar.Class.Loadout.Values;
+                
+                // Weapons
+                var weaponData = new ObservableCollection<Weapon>(loadedChar.Class.Loadout.Values);
+                datagrid_Weapons.ItemsSource = weaponData;
             }
+        }
+
+        private void changeHP(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (textBox_currentHP.Text.StartsWith("-") || textBox_currentHP.Text.StartsWith("+"))
+                {
+                    health += int.Parse(textBox_currentHP.Text);
+                    textBox_currentHP.Text = health.ToString();
+                }
+                Save();
+                Keyboard.ClearFocus();
+                
+            }
+            
         }
     }
 }
