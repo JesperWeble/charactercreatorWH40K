@@ -17,6 +17,7 @@ using charactercreatorRedo;
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace Character_Sheet
 {
@@ -31,7 +32,6 @@ namespace Character_Sheet
         public MainWindow()
         {
             InitializeComponent();
-
         }
         public void onlyNumValid(object sender, TextCompositionEventArgs e)
         {
@@ -49,6 +49,15 @@ namespace Character_Sheet
                 Character loadedChar = JsonConvert.DeserializeObject<Character>(json);
 
                 loadedChar.hp = int.Parse(textBox_currentHP.Text);
+                loadedChar.weapons.Clear();
+
+                // Save Weapons \\
+                //foreach (Weapon eachWeapon in datagrid_Weapons.Items)
+                //{
+                //    loadedChar.weapons.Add(eachWeapon.Title, eachWeapon);
+                //}
+
+                // Make similar for saving Inventory \\
 
                 string saveFile = JsonConvert.SerializeObject(loadedChar);
                 File.WriteAllText(filePath, saveFile);
@@ -129,7 +138,24 @@ namespace Character_Sheet
                 // Weapons
                 var weaponData = new ObservableCollection<Weapon>(loadedChar.Class.Loadout.Values);
                 datagrid_Weapons.ItemsSource = weaponData;
+
+                // Inventory
+                var inventoryData = new ObservableCollection<Item>(loadedChar.Class.ItemPack.Values);
+                datagrid_Inventory.ItemsSource = inventoryData;
+
+                // Feats
+                var featData = new ObservableCollection<Trait>(loadedChar.traits);
+                datagrid_Feat.ItemsSource = featData;
+
+
             }
+        }
+
+        // Add Method for Button to add weapons to the Weapon Grid
+        // Same but for items for the Inventory Grid.
+        private void datagridChanges(object sender, EventArgs e)
+        {
+
         }
 
         private void changeHP(object sender, KeyEventArgs e)
@@ -146,6 +172,17 @@ namespace Character_Sheet
                 
             }
             
+        }
+
+        private void datagrid_Feat_LostFocus(object sender, RoutedEventArgs e)
+        {
+            datagrid_Feat.SelectedItem = null;
+        }
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scroller = (ScrollViewer)sender;
+            scroller.ScrollToVerticalOffset(scroller.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
     }
 }

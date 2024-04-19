@@ -203,7 +203,15 @@ namespace charactercreatorRedo
                 //Modifiers
                 characterBeingMade.abilityModifiers[$"{abilityName}_Mod"] = (characterBeingMade.abilityScores[abilityName] - 10) / 2;
             }
-
+            // Traits
+            for (int index = 0; index < characterBeingMade.Race.racials.Count; index++)
+            {
+                characterBeingMade.traits.Add(characterBeingMade.Race.racials[index]);
+            }
+            for (int index = 0; index < characterBeingMade.Class.traits.Count; index++)
+            {
+                characterBeingMade.traits.Add(characterBeingMade.Class.traits[index]);
+            }
             // Hit Points
             for (int index = 0; index < characterBeingMade.Class.traits.Count; index++)
             {

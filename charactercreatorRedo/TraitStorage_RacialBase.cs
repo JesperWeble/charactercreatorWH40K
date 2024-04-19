@@ -14,6 +14,7 @@ namespace charactercreatorRedo
         public Trait_Racial_Base_Ork()
         {
             Title = "Ork Traits";
+            Classification = "Racial";
             Description = "-- Stats --\nAbility: +2 CON\nSpeed: Your base walking speed is based on your Subrace.\nLanguages: Speak, not write Gothic.\n\n-- Traits Gained --\nPrimal Intuition\nDarkvision\nGet Stuck In.";
             abilityBonus["CON_Bonus"] = 2;
             traits.addTrait(new commonTraitDarkvision());
@@ -27,6 +28,7 @@ namespace charactercreatorRedo
         public Trait_Racial_Ork_GetStuckIn()
         {
             Title = "Get Stuck In";
+            Classification = "Racial";
             Description = "When an attack made with a Melee Weapon hits with a natural 6, add one additional dice to the subsequent wound roll.";
         }
 
@@ -38,18 +40,19 @@ namespace charactercreatorRedo
     //---/  Boy  \---\\
 
     public class Trait_Racial_Base_Ork_Boy : Trait
+    {
+        public Trait_Racial_Base_Ork_Boy()
         {
-            public Trait_Racial_Base_Ork_Boy()
-            {
-                Title = "Boy Traits";
-                Description = "-- Stats --\nSpeed: 30ft\nSize: Medium\n\n--Traits Gained--\nEre We Go\nMob Rule\nMight Makes Right";
-                hp = 2;
-                traits.addTrait(new orkBoyRacialEreWeGo());
-                traits.addTrait(new orkBoyRacialMobRule());
-                traits.addTrait(new orkBoyRacialMightMakesRight());
-            }
-
+            Title = "Boy Traits";
+            Classification = "Racial";
+            Description = "-- Stats --\nSpeed: 30ft\nSize: Medium\n\n--Traits Gained--\nEre We Go\nMob Rule\nMight Makes Right";
+            hp = 2;
+            traits.addTrait(new orkBoyRacialEreWeGo());
+            traits.addTrait(new orkBoyRacialMobRule());
+            traits.addTrait(new orkBoyRacialMightMakesRight());
         }
+
+    }
 
     //---/  Boy  \---\\
 
@@ -61,6 +64,7 @@ namespace charactercreatorRedo
             public Trait_Racial_Base_Ork_Grot()
             {
                 Title = "Grot Traits";
+                Classification = "Racial";
                 Description = "-- Stats --\nAbility: +4 DEX & -2 CON\nSpeed: 35ft\nSize: Small\n\n--Traits Gained--\nSneaky Escape\nGrot Cunning\nSmall Frame";
                 abilityBonus["DEX_Bonus"] = 4; 
                 abilityBonus["CON_Bonus"] = -2;
